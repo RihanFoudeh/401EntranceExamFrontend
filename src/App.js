@@ -1,12 +1,20 @@
 import React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+import Login from './components/Login'
+
+import Home from './components/Home'
+
+import favFruit from './components/FavFruit'
+
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
+import FavFruit from './components/FavFruit';
 
 
 class App extends React.Component {
@@ -21,9 +29,14 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `Home` component, if they are not, render the `Login` component */}
+             
+             {(isAuthenticated)? <Home/> : <Login/>}
+             
               </Route>
               <Route exact path="/favFruit">
                 {/* TODO: if the user is logged in, render the `FavFruit` component, if they are not, render the `Login` component */}
+             {(isAuthenticated)&& <FavFruit/>}
+             
               </Route>
             </Switch>
             <Footer />
